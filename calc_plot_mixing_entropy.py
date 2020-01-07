@@ -17,7 +17,7 @@ def calcBinaryMixEntropy(Lpd1_Lpd1,Lpd2_Lpd2,Lpd1_Lpd2):
     binary_mix_entropy = -((X_SL * np.log2(X_SL)) +( X_DL * np.log2(X_DL)))
 
     return binary_mix_entropy
-    
+sim_time     = 30.0 #in US    
 WRKDIR       = "."
 
 lpd11_u      = np.loadtxt(r'%s/upper_Lpd1_Lpd1.R1.dat'%WRKDIR)
@@ -34,7 +34,7 @@ binary_mix_entropy_l = calcBinaryMixEntropy(lpd11_l,lpd22_l,lpd12_l)
             
 
 arr_length = np.shape(binary_mix_entropy_u)
-time       = np.arange(0,30.0,30.0/arr_length[0])
+time       = np.arange(0,sim_time,sim_time/arr_length[0])
 
 plt.plot(time,binary_mix_entropy_u,'-',color='red',alpha=0.75, linewidth=1,label='Upper-leaflet') 
 plt.plot(time,binary_mix_entropy_l,'-',color='blue',alpha=0.75, linewidth=1,label='Lower-leaflet') 
