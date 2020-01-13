@@ -22,8 +22,7 @@ print 'Initiating Voroni Tesselation'
 
 #Indexs for atom selection are according to the psf file
 
-runindex = int(sys.argv[1]) # replicates 1, 2, 3
-side     = sys.argv[2] # up for upper leaflet, down for lower leaflet
+side     = sys.argv[1] # up for upper leaflet, down for lower leaflet
 
 #Voronoi Snapshots
 PRINT_VOR    = 'NO'
