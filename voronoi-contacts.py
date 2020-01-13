@@ -86,10 +86,9 @@ def voronoi_tessel(frame):
     print 'Frame %i in %i'%(frame, end_f)
     u = MDAnalysis.Universe(psf,trr)
     u.trajectory[int(frame)]
-    #u.trajectory[frame-1] # What the hell is MDAnalysis doing...? This changes the frame to frame "ts"
 
 # Select atoms within this particular frame
-    lpd1_atoms = u.select_atoms('resname %s and name PO4'%lipid1) # previously, this was u.selectAtoms
+    lpd1_atoms = u.select_atoms('resname %s and name PO4'%lipid1) 
     lpd2_atoms = u.select_atoms('resname %s and name PO4'%lipid2)
     lpd3_atoms = u.select_atoms('resname %s and name ROH'%lipid3)
 	
@@ -98,6 +97,7 @@ def voronoi_tessel(frame):
     num_lpd1 = lpd1_atoms.n_atoms
     num_lpd2 = lpd2_atoms.n_atoms
 
+    #Separating upper and lower leaflets
     # atoms in the upper leaflet as defined by insane.py or the CHARMM-GUI membrane builders
     # select cholesterol headgroups within 1.5 nm of lipid headgroups in the selected leaflet
     if side == 'up':
