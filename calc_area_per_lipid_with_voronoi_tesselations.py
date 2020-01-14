@@ -5,7 +5,7 @@ import numpy as np
 from MDAnalysis import *
 import MDAnalysis
 from scipy.spatial import Voronoi
-from tadlib.polygon import shoelace
+#from tadlib.polygon import shoelace
 import MDAnalysis.lib.NeighborSearch as NS
 import multiprocessing as mp
 from glob import glob
@@ -65,9 +65,20 @@ def introducePBC(x_box,y_box,atm_list):
     return atm_list_pbc
   
 #Polygon area calculation using shoelace algorithm
-def calcAreaofPolygon(vert) :
-    area = np.abs(0.5*shoelace(vert))
+#def calcAreaofPolygon(vert) :
+#    area = np.abs(0.5*shoelace(vert))
+#    return area
+
+def calcAreaofPolygon(corners):
+    n = len(corners) # of corners
+    area = 0.0
+    for i in range(n):
+        j = (i + 1) % n
+        area += corners[i][0] * corners[j][1]
+        area -= corners[j][0] * corners[i][1]
+    area = abs(area) / 2.0
     return area
+
     
 #Calculate the coordinates of the Voronoi Vertices
 def calcVerticeCoordinates(vert_arr,vor_struct) :
